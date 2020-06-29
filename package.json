@@ -1,0 +1,24 @@
+{
+  "name": "some-tools",
+  "version": "1.0.0",
+  "description": "some module for test",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-router": "^9.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxdneu/some-tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mxdneu/some-tools/issues"
+  },
+  "homepage": "https://github.com/mxdneu/some-tools#readme"
+}
