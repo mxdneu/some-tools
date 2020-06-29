@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "koa": "^2.13.0",
-    "koa-router": "^9.0.1"
+    "koa-router": "^9.0.1",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {},
   "scripts": {

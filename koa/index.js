@@ -18,6 +18,7 @@ router.get('/get/:id', (ctx, next) => {
   ctx.body = {
     id,
     code: 1,
+    success: id !== 5,
   }
 });
 
