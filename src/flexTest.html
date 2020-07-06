@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>flex test</title>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .main-wrap {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .header, .footer {
+        flex: 0 0 50px;
+        background-color: aqua;
+      }
+      .content {
+        flex: 1;
+        display: flex;
+      }
+      .menu, .shift {
+        flex: 0 0 100px;
+        background-color: grey;
+      }
+      .menu {
+        order: -1;
+      }
+      .main {
+        flex: 1;
+      }
+      /* flex: 1 === flex: 1 1 0% */
+    </style>
+  </head>
+  <body>
+    <div class="main-wrap">
+      <div class="header"></div>
+      <div class="content">
+        <div class="menu">菜单</div>
+        <div class="main">主要东西</div>
+        <div class="shift">旁边</div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>
