@@ -35,13 +35,11 @@ class MyPromise {
   }
 
   then(fulfilledCallBack, rejectedCallBack) {
-    console.log(this, 'out Promise');
     typeof fulfilledCallBack !== 'function' ? fulfilledCallBack = result => result : null;
     typeof rejectedCallBack !== 'function' ? rejectedCallBack = reason => {
       throw new Error(reason);
     } : null;
     return new MyPromise((resolve, reject) => {
-      console.log(this, 'new Promise this');
       this.fulfillArr.push(() => {
         try {
           let x = fulfilledCallBack(this.value);
