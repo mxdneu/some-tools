@@ -2,6 +2,10 @@ const eventEmit = require('./myEvent');
 
 const event = new eventEmit();
 
+// event.on('event', function(i) {
+//     console.log(11111, i);
+// });
+
 event.once('event', function(i) {
     console.log(11111, i);
 });
@@ -9,8 +13,8 @@ event.once('event', function(i) {
 
 event.emit('event', 2);
 
-event.off('event', function(i) {
-    console.log(11111, i);
-});
+// event.off('event', function(i) {
+//     console.log(11111, i);
+// });
 
 event.emit('event', 3);

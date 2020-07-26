@@ -40,3 +40,36 @@ class MyEvent {
 }
 
 module.exports = MyEvent;
+
+
+class mEvent{
+  constructor() {
+    this._events = {};
+  }
+
+  on(event, callback) {
+    const callbacks = this._events[event] || [];
+    callbacks.push(callback);
+    this._events[event] = callbacks;
+  }
+
+  off(event, callback) {
+    const callbacks = this._events[event];
+    this._events[event] = callbacks && callbacks.filter(item => item !== callback);
+  }
+
+  once(event, callback) {
+    const wrap = (...args) => {
+      callback(...args);
+      this.off(event, callback);
+    }
+    this.on(event, wrap);
+  }
+
+  emit(event, ...args) {
+    const callbacks = this._events[event];
+    callbacks.forEach(item => {
+      item(...args);
+    });
+  }
+}
