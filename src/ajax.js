@@ -1,5 +1,12 @@
 // 封装ajax，使用promise
 
+// ready state
+// 0: 请求初始化
+// 1: 服务器建立连接
+// 2: 请求已经接受
+// 3: 请求处理中
+// 4: 请求以完成，响应就绪
+
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 module.exports = function pAjax(url, id) {
