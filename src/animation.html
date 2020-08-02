@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>css动画和js动画实现</title>
+    <meta charset="UTF-8" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .box {
+        margin: 20px;
+        position: relative;
+        width: 300px;
+        height: 100px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .first {
+        background: blue;
+        animation: aForCss 5s infinite;
+      }
+      .second {
+        background: red;
+      }
+      @keyframes aForCss {
+        from {
+          left: 0px;
+        }
+        to {
+          left: 500px;
+        };
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box first">animation for css</div>
+    <div class="box second">animation for js</div>
+    <script>
+      const ele = document.querySelectorAll('.second')[0];
+      function animationForJs() {
+        let left = 0;
+        let timer = null;
+        timer = setInterval(() => {
+          if (left >= 500) {
+            left = 0;
+            clearInterval(timer);
+          } else {
+            left += 1;
+          }
+          ele.style.left = `${left}px`;
+        }, 10);
+      }
+      animationForJs();
+    </script>
+  </body>
+</html>
