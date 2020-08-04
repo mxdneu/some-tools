@@ -34,6 +34,24 @@ class MyPromise {
     }
   }
 
+  //为类的静态方法，而不是在原型上
+  static all(promiseAry = []) {
+    let index = 0, 
+        result = [];
+    return new Promise((resolve, reject) => {
+      for(let i = 0; i < promiseAry.length; i++){
+        promiseAry[i].then(val => {
+          index++;
+          result[i] = val;
+          if( index === promiseAry.length){
+            resolve(result)
+          }
+        }, reject);
+      }
+    })
+  }
+
+
   then(fulfilledCallBack, rejectedCallBack) {
     typeof fulfilledCallBack !== 'function' ? fulfilledCallBack = result => result : null;
     typeof rejectedCallBack !== 'function' ? rejectedCallBack = reason => {

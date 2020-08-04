@@ -42,7 +42,7 @@ class MyEvent {
 module.exports = MyEvent;
 
 
-class mEvent{
+class mEvent {
   constructor() {
     this._events = {};
   }
@@ -54,8 +54,11 @@ class mEvent{
   }
 
   off(event, callback) {
-    const callbacks = this._events[event];
-    this._events[event] = callbacks && callbacks.filter(item => item !== callback);
+    let callbacks = this._events[event];
+    if (callbacks && callbacks.length) {
+      callbacks = callbacks.filter(item => (item !== callback));
+    }
+    this._events[event] = callbacks;
   }
 
   once(event, callback) {
@@ -67,9 +70,13 @@ class mEvent{
   }
 
   emit(event, ...args) {
-    const callbacks = this._events[event];
-    callbacks.forEach(item => {
-      item(...args);
-    });
+    const callbacks = this._events[event] || [];
+    if (callbacks.length) {
+      callbacks.forEach(item => {
+        item(...args);
+      });
+    }
   }
 }
+
+module.exports = mEvent;
