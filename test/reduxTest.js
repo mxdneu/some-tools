@@ -16,6 +16,7 @@ const store = createStore(reducer);
 // action creator
 function addSum(num) {
   const temNum = Math.pow(num, 2);
+  // this is action
   return {
     type: 'ADD',
     payload: {

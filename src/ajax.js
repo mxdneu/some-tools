@@ -31,3 +31,24 @@ module.exports = function pAjax(url, id) {
   });
   return promise;
 }
+
+function ustAjax(url) {
+  return new Promise((resolve, reject) => {
+    const handle = function() {
+      if (this.readyState !== 4) {
+        return;
+      }
+      if (this.status === 200) {
+        resolve(this.responesText);
+      } else {
+        reject(this.statusText);
+      }
+    }
+    const client = new XMLHttpRequest();
+    client.open('GET', url);
+    client.onreadystatechange = handle;
+    client.responseType = "json";
+    client.setRequestHeader('Accept', 'application/json');
+    client.send();
+  })
+}

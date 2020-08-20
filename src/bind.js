@@ -9,3 +9,13 @@ Function.prototype.myBind = function(context) {
     self.apply(context, args.concat(bindArgs));
   }
 }
+
+
+Function.prototype.hisBind = function(context) {
+  const self = this;
+  const firstArg = Array.prototype.slice.call(arguments, 1);
+  return function() {
+    const sec = Array.prototype.slice.call(arguments);
+    return self.apply(context, firstArg.concat(sec));
+  }
+}

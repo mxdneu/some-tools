@@ -51,6 +51,32 @@ class MyPromise {
     })
   }
 
+  static allSettled(promiseAry = []) {
+    let index = 0;
+    let result = [];
+    return new MyPromise((resolve, reject) => {
+      for(let i = 0; i < promiseAry.length; i++) {
+        promiseAry[i].then(val => {
+          index++;
+          result[i] = {
+            value: val,
+            status: 'fulfilled',
+          };
+        }, err => {
+          index++;
+          result[i] = {
+            value: err,
+            status: 'rejected',
+          };
+        }).finally(() => {
+          if (index === promiseAry.length) {
+            resolve(result);
+          }
+        })
+      }
+    });
+  }
+
 
   then(fulfilledCallBack, rejectedCallBack) {
     typeof fulfilledCallBack !== 'function' ? fulfilledCallBack = result => result : null;
