@@ -1,3 +1,5 @@
+import { connect } from "http2";
+
 // 防抖和截流函数
 
 // 测试方法

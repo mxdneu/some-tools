@@ -19,7 +19,7 @@
       }
       .first {
         background: blue;
-        animation: aForCss 5s infinite;
+        animation: zhuan 5s infinite;
       }
       .second {
         background: red;
@@ -31,6 +31,14 @@
         to {
           left: 500px;
         };
+      }
+      @keyframes zhuan {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg)
+        }
       }
     </style>
   </head>
