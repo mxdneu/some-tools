@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>123</title>
+	<style type="text/css">
+		.wrap1 {
+			display: flex;
+			width: 100%;
+			height: 400px;
+			justify-content: center;
+			align-items: center;
+			background: grey;
+			margin-bottom: 50px;
+		}
+		.in {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		.wrap2 {
+			width: 100%;
+			height: 400px;
+			background: grey;
+			position: relative;
+		}
+		.in2 {
+			width: 100px;
+			height: 100px;
+			background: blue;
+			position: absolute;
+		    left: 50%;
+		    top: 50%;
+		    transform: translate(-50%, -50%);
+		}
+		.trangle {
+			border: 40px solid;
+			border-color: transparent transparent red;
+			/*border-color: transparent transparent red;*/
+			height: 0;
+			width: 0;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap1">
+	<div class="in"></div>
+</div>
+<div class="wrap2">
+	<div class="in2"></div>
+</div>
+<div class="trangle"></div>
+</body>
+</html>

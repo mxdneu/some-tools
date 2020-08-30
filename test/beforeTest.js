@@ -48,3 +48,56 @@ class myEvent{
     this.on(event, wraper);
   }
 }
+
+class MyPromise {
+  constructor(callback) {
+    this.value = null;
+    this.status = 'pending';
+    this.fulArr = [];
+    this.rejectArr = [];
+    let fulFn = result => {
+      if (this.status !== 'pending') {
+        return;
+      }
+      let timer = setTimeout(() => {
+        this.value = result;
+        this.status = 'fulfilled';
+        this.fulArr.forEach(item => {
+          item(this.value);
+        });
+      }, 0);
+    }
+    let rejectFn = result => {
+      if (this.status !== 'pending') {
+        return;
+      }
+      let timer = setTimeout(() => {
+        this.value = result;
+        this.status = 'rejected';
+        this.rejectArr.forEach(item => {
+          item(this.value);
+        });
+      }, 0);
+    }
+    try {
+      callback(fulFn, rejectFn);
+    } catch(e) {
+      rejectFn(e);
+    }
+  }
+
+  then(fulfilledCallback, rejectedCallback) {
+    typeof fulfilledCallback !== 'function' && (fulfilledCallback = result => result);
+    typeof rejectedCallback !== 'function' && (rejectedCallback = reason => reason);
+    return new MyPromise((resolve, reject) => {
+      this.fulArr.push(() => {
+        let x = fulfilledCallback(this.value);
+        x instanceof MyPromise ? x.then(resolve, reject) : resolve(x);
+      });
+      this.rejectArr.push(() => {
+        let x = rejectedCallback(this.value);
+        x instanceof MyPromise ? x.then(resolve, reject) : resolve(x);
+      });
+    })
+  }
+}
